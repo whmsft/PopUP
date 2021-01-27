@@ -1,2 +1,2 @@
 # Draw
-a simple paint program
+A simple drawing program made for Android..
