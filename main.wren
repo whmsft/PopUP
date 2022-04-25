@@ -3,6 +3,8 @@ import "random" for Random
 import "input" for Keyboard, Mouse
 import "graphics" for Canvas, Color
 
+var GAME = false
+
 class Dialog {
   finish {_finish}
   x {_x}
@@ -32,7 +34,7 @@ class Dialog {
     _lastx = Mouse.x
     _lasty = Mouse.y
     // (Canvas.pget(Mouse.x, Mouse.y) == Color.red)
-    if ((((Mouse.x > _x+_w-6) && (Mouse.x < _x+_w-2)) && ((Mouse.y < _y+6) && (Mouse.y > _y+2))) && (Mouse.isButtonPressed("left"))) {
+    if ((((Mouse.x > _x+_w-12) && (Mouse.x < _x+_w)) && ((Mouse.y < _y+8) && (Mouse.y > _y))) && (Mouse.isButtonPressed("left"))) {
       _finish = true
     }
     if (((Mouse.x > _x && Mouse.x < _x+_w) && (Mouse.y > _y && Mouse.y < _y+_h)) && (Mouse.isButtonPressed("left"))) {
@@ -44,7 +46,9 @@ class Dialog {
     if (finish == false) {
       Canvas.rectfill(_x, _y, _w, _h, Color.white)
       Canvas.rect(_x+-1, _y-1, _w+2, _h+2, Color.black)
-      Canvas.circlefill(_x+_w-4, _y+3, 2, Color.red)
+      Canvas.rectfill(_x+_w-12, _y, 12,8, Color.hex("f00"))
+      Canvas.line(_x+_w-10,y+2, _x+w-3, y+5, Color.white)
+      Canvas.line(_x+_w-3,y+2, _x+w-10, y+5, Color.white)
     }
   }
 }
@@ -63,26 +67,36 @@ class main {
     Window.title = "PopUP - wren"
   }
   update() {
-    _tick = _tick+1
-    if (_tick >= 60 * _wait) {
-      _popups.add(Dialog.new())
-      _tick = 0
-      _wait = _rand.float(0.1, 1.5)
-    }
-    _popups.each { |pop|
-      pop.update()
-      if (pop.finish == true) {
-        _popups.removeAt(_varpostmp)
+    if (GAME) {
+      _tick = _tick+1
+      if (_tick >= 60 * _wait) {
+        _popups.add(Dialog.new())
+        _tick = 0
+        _wait = _rand.float(0.5, 1.5)
       }
-      _varpostmp = _varpostmp + 1
+      _popups.each { |pop|
+        pop.update()
+        if (pop.finish == true) {
+          _popups.removeAt(_varpostmp)
+        }
+        _varpostmp = _varpostmp + 1
+      }
+      _varpostmp = 0
+    } else {
+      if (Keyboard.isKeyDown("return")) {
+        GAME = true
+      }
     }
-    _varpostmp = 0
   }
   draw(alpha) {
-    Canvas.cls()
-    Canvas.print(_popups.count, 5, 5, Color.white)
-    _popups.each{ |pop|
-      pop.draw()
+    if (GAME) {
+      Canvas.cls()
+      Canvas.print(_popups.count, 5, 5, Color.white)
+      _popups.each{ |pop|
+        pop.draw()
+      }
+    } else {
+      Canvas.print("hit <RETURN> to begin", 5, 5, Color.white)
     }
   }
 }
