@@ -49,6 +49,7 @@ class Dialog {
       Canvas.rectfill(_x+_w-12, _y, 12,8, Color.hex("f00"))
       Canvas.line(_x+_w-10,y+2, _x+w-3, y+5, Color.white)
       Canvas.line(_x+_w-3,y+2, _x+w-10, y+5, Color.white)
+      Canvas.print("popup",_x+1, _y+1, Color.black)
     }
   }
 }
@@ -59,7 +60,7 @@ class main {
     _varpostmp = 0
     _popups = []
     _rand = Random.new()
-    _wait = _rand.float(0.4, 1.5)
+    _wait = _rand.float(0.25, 1.25)
     _tick = 0
     _scale = 4
     Canvas.resize(240, 136)
@@ -82,6 +83,11 @@ class main {
         _varpostmp = _varpostmp + 1
       }
       _varpostmp = 0
+      if (_popups.count >= 15) {
+        GAME = false
+        _popups = []
+        Canvas.cls()
+      }
     } else {
       if (Keyboard.isKeyDown("return")) {
         GAME = true
@@ -91,12 +97,16 @@ class main {
   draw(alpha) {
     if (GAME) {
       Canvas.cls()
-      Canvas.print(_popups.count, 5, 5, Color.white)
       _popups.each{ |pop|
         pop.draw()
       }
+      if (_popups.count >= 10) {
+        Canvas.print("MEMORY FULL", 75, 60, Color.hex("555"))
+      }
+      Canvas.print(_popups.count, 5, 5, Color.white)
     } else {
       Canvas.print("hit <RETURN> to begin", 5, 5, Color.white)
+      Canvas.print("HOW-TO\n  Close Popups\n  when popups are +10:\n    MEMORY FULL\n  when popups are 15:\n    GAME OVER", 5, 25, Color.white)
     }
   }
 }
