@@ -34,7 +34,6 @@ class Dialog {
     _scrollY = _lasty - Mouse.y
     _lastx = Mouse.x
     _lasty = Mouse.y
-    // (Canvas.pget(Mouse.x, Mouse.y) == Color.red)
     if ((((Mouse.x > _x+_w-12*5) && (Mouse.x < _x+_w)) && ((Mouse.y < _y+8*5) && (Mouse.y > _y))) && (Mouse.isButtonPressed("left"))) {
       _finish = true
       SCORE = SCORE + 1
