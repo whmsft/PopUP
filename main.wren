@@ -26,7 +26,7 @@ class Dialog {
     _w = 300
     _h = 200
     _rand = Random.new()
-    _x = random.int(1200-20)
+    _x = random.int(1024-20)
     _y = random.int(680-20)
   }
   update() {
@@ -63,11 +63,12 @@ class main {
     _wait = _rand.float(0.25, 1.25)
     _tick = 0
     _scale = 1
-    Canvas.resize(1200, 680)
+    Canvas.resize(1024, 680)
     Window.resize(_scale * Canvas.width, _scale * Canvas.height)
     Window.title = "Pop-Up v0.beta"
     Font.load("OpenSans", "./OpenSans.ttf", 25)
     Font.load("OpenSans_XL", "./OpenSans.ttf", 50)
+    Font.load("OpenSans_XXL", "./OpenSans.ttf", 80)
   }
   update() {
     if (GAME) {
@@ -103,7 +104,8 @@ class main {
         pop.draw()
       }
       if (_popups.count >= 10) {
-        Font["OpenSans_XL"].print("MEMORY FULL", 75, 60, Color.hex("f22"))
+        Font["OpenSans_XXL"].print("MEMORY FULL", 252, 282, Color.hex("fff"))
+        Font["OpenSans_XXL"].print("MEMORY FULL", 250, 280, Color.hex("f22"))
       }
       Font["OpenSans_XL"].print("Score: "+SCORE.toString, 5, -15, Color.white)
     } else {
