@@ -1,3 +1,5 @@
+<img src="./play.gif">
+
 # PopUP
 
 *Under Development (WIP)*

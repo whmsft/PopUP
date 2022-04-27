@@ -66,6 +66,7 @@ class main {
     Canvas.resize(1024, 680)
     Window.resize(_scale * Canvas.width, _scale * Canvas.height)
     Window.title = "Pop-Up v0.beta"
+    Font.load("Pixeloid", "./Pixeloid.ttf", 25)
     Font.load("OpenSans", "./OpenSans.ttf", 25)
     Font.load("OpenSans_XL", "./OpenSans.ttf", 50)
     Font.load("OpenSans_XXL", "./OpenSans.ttf", 80)
@@ -109,8 +110,8 @@ class main {
       }
       Font["OpenSans_XL"].print("Score: "+SCORE.toString, 5, -15, Color.white)
     } else {
-      Font["OpenSans"].print("hit <RETURN> to begin", 5, 5, Color.white)
-      Font["OpenSans"].print("HOW-TO\n  Close Popups\n  when popups are +10:\n    MEMORY FULL\n  when popups are 15:\n    GAME OVER", 5, 55, Color.white)
+      Font["Pixeloid"].print("hit <RETURN> to begin", 5, 10, Color.white)
+      Font["Pixeloid"].print("HOW-TO\n  Close Popups\n  when popups are +10:\n    MEMORY FULL\n  when popups are 15:\n    GAME OVER", 5, 55, Color.white)
     }
   }
 }
