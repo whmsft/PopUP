@@ -23,8 +23,8 @@ class Dialog {
     _scrollY = 0
     _lastx = Mouse.x
     _lasty = Mouse.y
-    _w = 60*5
-    _h = 40*5
+    _w = 300
+    _h = 200
     _rand = Random.new()
     _x = random.int(1200-20)
     _y = random.int(680-20)
@@ -66,7 +66,7 @@ class main {
     _scale = 1
     Canvas.resize(1200, 680)
     Window.resize(_scale * Canvas.width, _scale * Canvas.height)
-    Window.title = "PopUP - wren"
+    Window.title = "Pop-Up v0.beta"
     Font.load("OpenSans", "./OpenSans.ttf", 25)
     Font.load("OpenSans_XL", "./OpenSans.ttf", 50)
   }
