@@ -1,9 +1,10 @@
 import "dome" for Window
 import "random" for Random
 import "input" for Keyboard, Mouse
-import "graphics" for Canvas, Color
+import "graphics" for Canvas, Color, Font
 
 var GAME = false
+var SCORE = 0
 
 class Dialog {
   finish {_finish}
@@ -25,8 +26,8 @@ class Dialog {
     _w = 60*5
     _h = 40*5
     _rand = Random.new()
-    _x = random.int(180*5)
-    _y = random.int(94*5)
+    _x = random.int(1200-20)
+    _y = random.int(680-20)
   }
   update() {
     _scrollX = _lastx - Mouse.x
@@ -36,6 +37,7 @@ class Dialog {
     // (Canvas.pget(Mouse.x, Mouse.y) == Color.red)
     if ((((Mouse.x > _x+_w-12*5) && (Mouse.x < _x+_w)) && ((Mouse.y < _y+8*5) && (Mouse.y > _y))) && (Mouse.isButtonPressed("left"))) {
       _finish = true
+      SCORE = SCORE + 1
     }
     if (((Mouse.x > _x && Mouse.x < _x+_w) && (Mouse.y > _y && Mouse.y < _y+_h)) && (Mouse.isButtonPressed("left"))) {
       _x = _x - _scrollX
@@ -46,9 +48,9 @@ class Dialog {
     if (finish == false) {
       Canvas.rectfill(_x, _y, _w, _h, Color.white)
       Canvas.rectfill(_x+_w-12*5, _y, 12*5,8*5, Color.hex("f00"))
-      Canvas.line(_x+_w-10*5,y+2*5, _x+w-3*5, y+5*5, Color.white)
-      Canvas.line(_x+_w-3*5,y+2*5, _x+w-10*5, y+5*5, Color.white)
-      Canvas.print("popup",_x+1*5, _y+1*5, Color.black)
+      Canvas.line(_x+_w-10*5, y+2*5, _x+w-2*5, y+6*5, Color.white, 2)
+      Canvas.line(_x+_w-2*5, y+2*5, _x+w-10*5, y+6*5, Color.white, 2)
+      Font["OpenSans"].print("PopUp",_x+5, _y+1, Color.black)
     }
   }
 }
@@ -65,6 +67,8 @@ class main {
     Canvas.resize(1200, 680)
     Window.resize(_scale * Canvas.width, _scale * Canvas.height)
     Window.title = "PopUP - wren"
+    Font.load("OpenSans", "./OpenSans.ttf", 25)
+    Font.load("OpenSans_XL", "./OpenSans.ttf", 50)
   }
   update() {
     if (GAME) {
@@ -95,17 +99,17 @@ class main {
   }
   draw(alpha) {
     if (GAME) {
-      Canvas.cls()
+      Canvas.cls(Color.hex("0084ff"))
       _popups.each{ |pop|
         pop.draw()
       }
       if (_popups.count >= 10) {
-        Canvas.print("MEMORY FULL", 75, 60, Color.hex("555"))
+        Font["OpenSans_XL"].print("MEMORY FULL", 75, 60, Color.hex("f22"))
       }
-      Canvas.print(_popups.count, 5, 5, Color.white)
+      Font["OpenSans_XL"].print("Score: "+SCORE.toString, 5, -15, Color.white)
     } else {
-      Canvas.print("hit <RETURN> to begin", 5, 5, Color.white)
-      Canvas.print("HOW-TO\n  Close Popups\n  when popups are +10:\n    MEMORY FULL\n  when popups are 15:\n    GAME OVER", 5, 25, Color.white)
+      Font["OpenSans"].print("hit <RETURN> to begin", 5, 5, Color.white)
+      Font["OpenSans"].print("HOW-TO\n  Close Popups\n  when popups are +10:\n    MEMORY FULL\n  when popups are 15:\n    GAME OVER", 5, 55, Color.white)
     }
   }
 }
