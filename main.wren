@@ -34,7 +34,7 @@ class Dialog {
     _lastx = Mouse.x
     _lasty = Mouse.y
     // (Canvas.pget(Mouse.x, Mouse.y) == Color.red)
-    if ((((Mouse.x > _x+_w-12) && (Mouse.x < _x+_w)) && ((Mouse.y < _y+8) && (Mouse.y > _y))) && (Mouse.isButtonPressed("left"))) {
+    if ((((Mouse.x > _x+_w-12*5) && (Mouse.x < _x+_w)) && ((Mouse.y < _y+8*5) && (Mouse.y > _y))) && (Mouse.isButtonPressed("left"))) {
       _finish = true
     }
     if (((Mouse.x > _x && Mouse.x < _x+_w) && (Mouse.y > _y && Mouse.y < _y+_h)) && (Mouse.isButtonPressed("left"))) {
@@ -45,7 +45,6 @@ class Dialog {
   draw() {
     if (finish == false) {
       Canvas.rectfill(_x, _y, _w, _h, Color.white)
-      Canvas.rect(_x+-1*5, _y-1*5, _w+2*5, _h+2*5, Color.black)
       Canvas.rectfill(_x+_w-12*5, _y, 12*5,8*5, Color.hex("f00"))
       Canvas.line(_x+_w-10*5,y+2*5, _x+w-3*5, y+5*5, Color.white)
       Canvas.line(_x+_w-3*5,y+2*5, _x+w-10*5, y+5*5, Color.white)
