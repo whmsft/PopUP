@@ -22,11 +22,11 @@ class Dialog {
     _scrollY = 0
     _lastx = Mouse.x
     _lasty = Mouse.y
-    _w = 60
-    _h = 40
+    _w = 60*5
+    _h = 40*5
     _rand = Random.new()
-    _x = random.int(180)
-    _y = random.int(94)
+    _x = random.int(180*5)
+    _y = random.int(94*5)
   }
   update() {
     _scrollX = _lastx - Mouse.x
@@ -45,11 +45,11 @@ class Dialog {
   draw() {
     if (finish == false) {
       Canvas.rectfill(_x, _y, _w, _h, Color.white)
-      Canvas.rect(_x+-1, _y-1, _w+2, _h+2, Color.black)
-      Canvas.rectfill(_x+_w-12, _y, 12,8, Color.hex("f00"))
-      Canvas.line(_x+_w-10,y+2, _x+w-3, y+5, Color.white)
-      Canvas.line(_x+_w-3,y+2, _x+w-10, y+5, Color.white)
-      Canvas.print("popup",_x+1, _y+1, Color.black)
+      Canvas.rect(_x+-1*5, _y-1*5, _w+2*5, _h+2*5, Color.black)
+      Canvas.rectfill(_x+_w-12*5, _y, 12*5,8*5, Color.hex("f00"))
+      Canvas.line(_x+_w-10*5,y+2*5, _x+w-3*5, y+5*5, Color.white)
+      Canvas.line(_x+_w-3*5,y+2*5, _x+w-10*5, y+5*5, Color.white)
+      Canvas.print("popup",_x+1*5, _y+1*5, Color.black)
     }
   }
 }
@@ -62,8 +62,8 @@ class main {
     _rand = Random.new()
     _wait = _rand.float(0.25, 1.25)
     _tick = 0
-    _scale = 4
-    Canvas.resize(240, 136)
+    _scale = 1
+    Canvas.resize(1200, 680)
     Window.resize(_scale * Canvas.width, _scale * Canvas.height)
     Window.title = "PopUP - wren"
   }
