@@ -25,4 +25,5 @@ Written in [Wren](https://wren.io) with [Dome Engine](https://domeengine.com)
 ## Credits
 
 Pixeloid Font (c) GGBotNet
+<br>
 OpenSans Font (c) 2022 Open Sans
