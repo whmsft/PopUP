@@ -66,7 +66,7 @@ class main {
     _scale = 1
     Canvas.resize(1024, 680)
     Window.resize(_scale * Canvas.width, _scale * Canvas.height)
-    Window.title = "Pop-Up v0.beta"
+    Window.title = "Pop-Up d1"
     Font.load("Pixeloid", "./Pixeloid.ttf", 25)
     Font.load("OpenSans", "./OpenSans.ttf", 25)
     Font.load("OpenSans_XL", "./OpenSans.ttf", 50)

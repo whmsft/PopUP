@@ -2,3 +2,5 @@ SCRIBBLE
 *.txt
 *.egg
 *.log
+*.exe
+*.html
