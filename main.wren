@@ -2,9 +2,10 @@ import "dome" for Window
 import "random" for Random
 import "input" for Keyboard, Mouse
 import "graphics" for Canvas, Color, Font
+import "io" for FileSystem
 
-var GAME = false
 var SCORE = 0
+var GAME = false
 
 class Dialog {
   finish {_finish}
