@@ -1,9 +1,9 @@
 <h1 align="center">
   PopUp<br>
-  <img src="https://img.shields.io/github/license/Whmsft/popup.svg?style=for-the-badge">
+  <img src="https://img.shields.io/badge/Code_Size-3.6 KB-blue.svg?style=for-the-badge">
   <img src="https://shields.io/tokei/lines/github/whmsft/popup?style=for-the-badge">
   <br>
-  <a href="https://wren.io"> <img src="https://img.shields.io/badge/Made%20with-wren-grey.svg?style=for-the-badge"></a>
+  <a href="https://wren.io"> <img src="https://img.shields.io/badge/Written%20in-wren-grey.svg?style=for-the-badge"></a>
   <a href="https://domeengine.com"> <img src="https://img.shields.io/badge/Made%20with-dome-8d3cff.svg?style=for-the-badge"> </a>
   
   <br>
