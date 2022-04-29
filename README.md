@@ -9,8 +9,7 @@
   
   <br>
     <hr>
-    <br
-  </br>
+    <br>
   <img src="./play.gif">
 </h1>
 
