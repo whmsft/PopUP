@@ -6,7 +6,7 @@ import "io" for FileSystem
 
 var VERSION = "0.1.5"
 var SCORE = 0
-var GAME = "over" // modes: boot, play, over
+var GAME = "boot" // modes: boot, play, over
 
 class Dialog {
   finish {_finish}
