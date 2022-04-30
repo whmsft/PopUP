@@ -4,6 +4,7 @@ import "input" for Keyboard, Mouse
 import "graphics" for Canvas, Color, Font
 import "io" for FileSystem
 
+var VERSION = "0.1.5"
 var SCORE = 0
 var GAME = "boot" // modes: boot, play, over
 
@@ -70,7 +71,7 @@ class main {
     Font.load("OpenSans", "./OpenSans.ttf", 25)
     Font.load("OpenSans_XL", "./OpenSans.ttf", 50)
     Font.load("OpenSans_XXL", "./OpenSans.ttf", 80)
-    Font.load("OpenSans_XXXL", "./OpenSans.ttf", 400)
+    Font.load("OpenSans_XXXL", "./OpenSans.ttf", 300)
   }
   update() {
     if (GAME == "play") {
@@ -111,7 +112,8 @@ class main {
       }
       Font["OpenSans_XL"].print("Score: "+SCORE.toString, 5, -15, Color.white)
 	} else if (GAME == "over") {
-		Font["OpenSans_XXXL"].print(":(", 50, -100, Color.white)
+		Font["OpenSans_XXXL"].print(":(", 10, -125, Color.white)
+		Font["OpenSans_XXL"].print("PopUp "+VERSION, 200, 90, Color.white)
 	} else if (GAME == "boot") {
       Canvas.cls(Color.hex("000"))
       Font["OpenSans"].print("hit <RETURN> to begin", 5, 10, Color.white)
