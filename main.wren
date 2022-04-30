@@ -6,7 +6,7 @@ import "io" for FileSystem
 
 var VERSION = "0.1.5"
 var SCORE = 0
-var GAME = "boot" // modes: boot, play, over
+var GAME = "over" // modes: boot, play, over
 
 class Dialog {
   finish {_finish}
@@ -67,7 +67,8 @@ class main {
     _scale = 1
     Canvas.resize(960, 544)
     Window.resize(_scale * Canvas.width, _scale * Canvas.height)
-    Window.title = "Pop-Up d1"
+    Window.title = "PopUp "+VERSION
+    Font.load("OpenSans_S", "./OpenSans.ttf", 20)
     Font.load("OpenSans", "./OpenSans.ttf", 25)
     Font.load("OpenSans_XL", "./OpenSans.ttf", 50)
     Font.load("OpenSans_XXL", "./OpenSans.ttf", 80)
@@ -114,6 +115,8 @@ class main {
 	} else if (GAME == "over") {
 		Font["OpenSans_XXXL"].print(":(", 10, -125, Color.white)
 		Font["OpenSans_XXL"].print("PopUp "+VERSION, 200, 90, Color.white)
+		Font["OpenSans"].print("Your PC ran into a problem and needs to restart\nWe're just collecting some error info, then\nplease throw this PC into the bin.", 10, 300, Color.white)
+		Font["OpenSans_S"].print("If you would like to learn more then don't search online\nblue_screen_of_death_in_whmsft_popup_err_101", 10, 475, Color.white)
 	} else if (GAME == "boot") {
       Canvas.cls(Color.hex("000"))
       Font["OpenSans"].print("hit <RETURN> to begin", 5, 10, Color.white)
