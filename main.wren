@@ -5,7 +5,7 @@ import "graphics" for Canvas, Color, Font
 import "io" for FileSystem
 
 var SCORE = 0
-var GAME = false
+var GAME = "boot" // modes: boot, play, over
 
 class Dialog {
   finish {_finish}
@@ -24,11 +24,11 @@ class Dialog {
     _scrollY = 0
     _lastx = Mouse.x
     _lasty = Mouse.y
-    _w = 300
-    _h = 200
+    _w = 240
+    _h = 160
     _rand = Random.new()
-    _x = random.int(1024-20)
-    _y = random.int(680-20)
+    _x = random.int(960-20)
+    _y = random.int(544-20)
   }
   update() {
     _scrollX = _lastx - Mouse.x
@@ -64,17 +64,16 @@ class main {
     _wait = _rand.float(0.25, 1.25)
     _tick = 0
     _scale = 1
-    Canvas.resize(1024, 680)
+    Canvas.resize(960, 544)
     Window.resize(_scale * Canvas.width, _scale * Canvas.height)
     Window.title = "Pop-Up d1"
-    Font.load("Pixeloid", "./Pixeloid.ttf", 25)
     Font.load("OpenSans", "./OpenSans.ttf", 25)
     Font.load("OpenSans_XL", "./OpenSans.ttf", 50)
     Font.load("OpenSans_XXL", "./OpenSans.ttf", 80)
-    Font.load("OpenSans_XXXL", "./OpenSans.ttf", 200)
+    Font.load("OpenSans_XXXL", "./OpenSans.ttf", 400)
   }
   update() {
-    if (GAME) {
+    if (GAME == "play") {
       _tick = _tick+1
       if (_tick >= 60 * _wait) {
         _popups.add(Dialog.new())
@@ -90,19 +89,19 @@ class main {
       }
       _varpostmp = 0
       if (_popups.count >= 15) {
-        GAME = false
+        GAME = "over"
         _popups = []
         Canvas.cls()
       }
     } else {
       if (Keyboard.isKeyDown("return")) {
-        GAME = true
+        GAME = "play"
       }
     }
   }
   draw(alpha) {
-    if (GAME) {
-      Canvas.cls(Color.hex("0084ff"))
+    Canvas.cls(Color.hex("0084ff"))
+    if (GAME == "play") {
       _popups.each{ |pop|
         pop.draw()
       }
@@ -111,9 +110,12 @@ class main {
         Font["OpenSans_XXL"].print("MEMORY FULL", 250, 280, Color.hex("f22"))
       }
       Font["OpenSans_XL"].print("Score: "+SCORE.toString, 5, -15, Color.white)
-    } else {
-      Font["Pixeloid"].print("hit <RETURN> to begin", 5, 10, Color.white)
-      Font["OpenSans_XXXL"].print(":(", 10, 10, Color.white)
+	} else if (GAME == "over") {
+		Font["OpenSans_XXXL"].print(":(", 50, -100, Color.white)
+	} else if (GAME == "boot") {
+      Canvas.cls(Color.hex("000"))
+      Font["OpenSans"].print("hit <RETURN> to begin", 5, 10, Color.white)
+      Font["OpenSans"].print("HOW-TO\n  Close Popups\n  when popups are +10:\n    MEMORY FULL\n  when popups are 15:\n    GAME OVER", 5, 55, Color.white)
     }
   }
 }
