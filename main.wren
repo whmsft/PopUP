@@ -5,7 +5,7 @@ import "graphics" for Canvas, Color, Font
 import "io" for FileSystem
 
 var SCORE = 0
-var GAME = false
+var GAME = "boot" // modes: boot, play, over
 
 class Dialog {
   finish {_finish}
@@ -73,7 +73,7 @@ class main {
     Font.load("OpenSans_XXL", "./OpenSans.ttf", 80)
   }
   update() {
-    if (GAME) {
+    if (GAME = "play") {
       _tick = _tick+1
       if (_tick >= 60 * _wait) {
         _popups.add(Dialog.new())
@@ -89,18 +89,18 @@ class main {
       }
       _varpostmp = 0
       if (_popups.count >= 15) {
-        GAME = false
+        GAME = "over"
         _popups = []
         Canvas.cls()
       }
     } else {
       if (Keyboard.isKeyDown("return")) {
-        GAME = true
+        GAME = "play"
       }
     }
   }
   draw(alpha) {
-    if (GAME) {
+    if (GAME = "play") {
       Canvas.cls(Color.hex("0084ff"))
       _popups.each{ |pop|
         pop.draw()
@@ -110,7 +110,7 @@ class main {
         Font["OpenSans_XXL"].print("MEMORY FULL", 250, 280, Color.hex("f22"))
       }
       Font["OpenSans_XL"].print("Score: "+SCORE.toString, 5, -15, Color.white)
-    } else {
+    } else if (GAME = "boot") {
       Font["Pixeloid"].print("hit <RETURN> to begin", 5, 10, Color.white)
       Font["Pixeloid"].print("HOW-TO\n  Close Popups\n  when popups are +10:\n    MEMORY FULL\n  when popups are 15:\n    GAME OVER", 5, 55, Color.white)
     }
