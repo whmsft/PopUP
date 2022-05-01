@@ -11,7 +11,7 @@
   
   <br>
   <hr>
-  <img src="./play.gif">
+  <img src="./gameplay.gif">
 </h1>
 
 
