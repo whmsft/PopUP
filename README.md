@@ -6,14 +6,14 @@
   <br>
   <a href="https://wren.io"> <img src="https://img.shields.io/badge/Written%20in-wren-grey.svg?style=for-the-badge"></a>
   <a href="https://domeengine.com"> <img src="https://img.shields.io/badge/Made%20with-dome-8d3cff.svg?style=for-the-badge"> </a>
+  <br>
+  <img src="https://img.shields.io/badge/status-stable-green.svg?style=for-the-badge">
   
   <br>
   <hr>
-  <br>
   <img src="./play.gif">
 </h1>
 
-**Under Development (WIP)**
 
 A simple popUP game where your work is to close as many popups you can!
 

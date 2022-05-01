@@ -4,7 +4,7 @@ import "input" for Keyboard, Mouse
 import "graphics" for Canvas, Color, Font
 import "io" for FileSystem
 
-var VERSION = "0.1.5"
+var VERSION = "0.5"
 var SCORE = 0
 var GAME = "boot" // modes: boot, play, over
 
@@ -119,8 +119,9 @@ class main {
 		Font["OpenSans_S"].print("If you would like to learn more then don't search online\nblue_screen_of_death_in_whmsft_popup_err_101", 10, 475, Color.white)
 	} else if (GAME == "boot") {
       Canvas.cls(Color.hex("000"))
-      Font["OpenSans"].print("hit <RETURN> to begin", 5, 10, Color.white)
-      Font["OpenSans"].print("HOW-TO\n  Close Popups\n  when popups are +10:\n    MEMORY FULL\n  when popups are 15:\n    GAME OVER", 5, 55, Color.white)
+      Font["OpenSans_XXXL"].print(":)", 10, -125, Color.white)
+      Font["OpenSans_XXL"].print("PopUp "+VERSION, 200, 90, Color.white)
+      Font["OpenSans"].print("Hit <RETURN> to start..", 10, 300, Color.white)
     }
   }
 }
