@@ -67,7 +67,7 @@ class main {
     _tick = 0
     _scale = 1
     Canvas.resize(960, 544)
-    Window.resize(_scale * Canvas.width, _scale * Canvas.height)
+    Window.resize(_scale * Canvas.width/2, _scale * Canvas.height/2)
     Window.title = "PopUp "+VERSION
     Font.load("OpenSans_S", "./OpenSans.ttf", 20)
     Font.load("OpenSans", "./OpenSans.ttf", 25)

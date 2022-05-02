@@ -1,5 +1,6 @@
 <h1 align="center">
-  PopUp<br>
+  PopUp
+  <hr>
   <img src="https://img.shields.io/badge/Code_Size-4.1 KB-blue.svg?style=for-the-badge">
   <img src="https://img.shields.io/badge/License-MIT-yellow?style=for-the-badge">
   <img src="https://img.shields.io/github/commit-activity/w/whmsft/popup?style=for-the-badge">
