@@ -11,7 +11,6 @@
   <img src="https://img.shields.io/badge/status-stable-green.svg?style=for-the-badge">
   
   <br>
-  <hr>
   <img src="./gameplay.gif">
 </h1>
 
