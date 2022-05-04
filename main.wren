@@ -6,7 +6,7 @@ import "io" for FileSystem
 
 var VERSION = "0.5.1.2"
 var SCORE = 0
-var GAME = "over" // modes: boot, play, over
+var GAME = "play" // modes: boot, play, over
 
 class Dialog {
   finish {_finish}
@@ -54,6 +54,9 @@ class Dialog {
       Canvas.line(_x+_w-10*5, y+2*5, _x+w-2*5, y+6*5, Color.white, 2)
       Canvas.line(_x+_w-2*5, y+2*5, _x+w-10*5, y+6*5, Color.white, 2)
       Canvas.rect(_x-1,_y-1, _w+1, _h+1, Color.black)
+      if (type == 0) {
+        Font["OpenSans"].print()
+      }
       if (type == 0) {
         Font["OpenSans"].print("LUCKY!.exe",_x+5, _y+1, Color.black)
       } else if (type == 1) {
