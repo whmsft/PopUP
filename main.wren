@@ -6,7 +6,7 @@ import "io" for FileSystem
 
 var VERSION = "0.5.1.2"
 var SCORE = 0
-var GAME = "play" // modes: boot, play, over
+var GAME = "boot" // modes: boot, play, over
 
 class Dialog {
   finish {_finish}
@@ -71,7 +71,7 @@ class Dialog {
 class main {
   construct new() {}
   init() {
-    // Mouse.hidden = true
+    Mouse.hidden = true
     _varpostmp = 0
     _popups = []
     _rand = Random.new()
@@ -86,9 +86,10 @@ class main {
     Font.load("OpenSans_XL", "./OpenSans.ttf", 50)
     Font.load("OpenSans_XXL", "./OpenSans.ttf", 80)
     Font.load("OpenSans_XXXL", "./OpenSans.ttf", 300)
-    Font.load("winlogo", "./winlogo.ttf", 300)
+    Font.load("winlogo", "./icons.ttf", 300)
+    Font.load("cursor", "./icons.ttf", 30)
   }
-  update() {
+  update() {    
     if (GAME == "play") {
       _tick = _tick+1
       if (_tick >= 60 * _wait) {
@@ -138,6 +139,7 @@ class main {
       Font["OpenSans_XXL"].print("PopUp "+VERSION, 200, 90, Color.white)
       Font["OpenSans"].print("Hit <RETURN> to start..", 10, 300, Color.white)
     }
+    Font["cursor"].print("B", Mouse.x-5, Mouse.y, Color.hex("202020"))
   }
 }
 
