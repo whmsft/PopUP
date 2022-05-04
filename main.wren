@@ -71,6 +71,7 @@ class Dialog {
 class main {
   construct new() {}
   init() {
+    // Mouse.hidden = true
     _varpostmp = 0
     _popups = []
     _rand = Random.new()
