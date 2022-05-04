@@ -4,7 +4,7 @@ import "input" for Keyboard, Mouse
 import "graphics" for Canvas, Color, Font
 import "io" for FileSystem
 
-var VERSION = "0.5"
+var VERSION = "0.5.1.2"
 var SCORE = 0
 var GAME = "over" // modes: boot, play, over
 
