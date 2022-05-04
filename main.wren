@@ -6,10 +6,11 @@ import "io" for FileSystem
 
 var VERSION = "0.5"
 var SCORE = 0
-var GAME = "boot" // modes: boot, play, over
+var GAME = "over" // modes: boot, play, over
 
 class Dialog {
   finish {_finish}
+  type {_type}
   x {_x}
   y {_y}
   w {_w}
@@ -30,6 +31,7 @@ class Dialog {
     _rand = Random.new()
     _x = random.int(960-20)
     _y = random.int(544-20)
+    _type = random.int(2)
   }
   update() {
     _scrollX = _lastx - Mouse.x
@@ -52,7 +54,11 @@ class Dialog {
       Canvas.line(_x+_w-10*5, y+2*5, _x+w-2*5, y+6*5, Color.white, 2)
       Canvas.line(_x+_w-2*5, y+2*5, _x+w-10*5, y+6*5, Color.white, 2)
       Canvas.rect(_x-1,_y-1, _w+1, _h+1, Color.black)
-      Font["OpenSans"].print("PopUp",_x+5, _y+1, Color.black)
+      if (type == 0) {
+        Font["OpenSans"].print("LUCKY!.exe",_x+5, _y+1, Color.black)
+      } else if (type == 1) {
+        Font["OpenSans"].print("DRIVERZ.exe", _x+5, _y+1, Color.black)
+      }
     }
   }
 }
@@ -67,7 +73,7 @@ class main {
     _tick = 0
     _scale = 1
     Canvas.resize(960, 544)
-    Window.resize(_scale * Canvas.width/2, _scale * Canvas.height/2)
+    Window.resize(_scale * Canvas.width, _scale * Canvas.height)
     Window.title = "PopUp "+VERSION
     Font.load("OpenSans_S", "./OpenSans.ttf", 20)
     Font.load("OpenSans", "./OpenSans.ttf", 25)

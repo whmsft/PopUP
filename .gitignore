@@ -4,4 +4,5 @@ SCRIBBLE
 *.log
 *.exe
 *.html
+release.cmd
 builds/
