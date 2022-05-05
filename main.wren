@@ -139,7 +139,7 @@ class main {
       Font["OpenSans_XXL"].print("PopUp "+VERSION, 200, 90, Color.white)
       Font["OpenSans"].print("Hit <RETURN> to start..", 10, 300, Color.white)
     }
-    Font["cursor"].print("B", Mouse.x-5, Mouse.y, Color.hex("202020"))
+    // Font["cursor"].print("B", Mouse.x-5, Mouse.y, Color.hex("202020"))
   }
 }
 
