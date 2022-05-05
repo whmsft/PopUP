@@ -1,7 +1,7 @@
 <h1 align="center">
   PopUp
   <hr>
-  <img src="https://img.shields.io/badge/Code_Size-3.9 KB-blue.svg?style=for-the-badge">
+  <img src="https://img.shields.io/badge/Code_Size-4.45 KB-blue.svg?style=for-the-badge">
   <img src="https://img.shields.io/badge/License-MIT-yellow?style=for-the-badge">
   <img src="https://img.shields.io/github/commit-activity/w/whmsft/popup?style=for-the-badge">
   <br>
@@ -20,7 +20,7 @@ A simple popUP game where your work is to close as many popups you can!
 GAME OVER on 15 popups
 
 # TODO
-1. Add many more types of popups
+1. Add many more types of popups (2 as of now) 
 2. Background music
 3. 2 options on each popup (ex: Ok, Cancel)
 
