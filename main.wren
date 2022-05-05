@@ -55,14 +55,11 @@ class Dialog {
       Canvas.line(_x+_w-2*5, y+2*5, _x+w-10*5, y+6*5, Color.white, 2)
       Canvas.rect(_x-1,_y-1, _w+1, _h+1, Color.black)
       if (type == 0) {
+        Font["OpenSans"].print("LUCKY!.exe",_x+5, _y+1, Color.black)
         Font["OpenSans"].print("You've WON\n$10000!", _x+5, _y+35, Color.black)
       } else if (type == 1) {
-        Font["OpenSans"].print("Install the new\ndriver!", _x+5, _y+35, Color.black)
-      }
-      if (type == 0) {
-        Font["OpenSans"].print("LUCKY!.exe",_x+5, _y+1, Color.black)
-      } else if (type == 1) {
         Font["OpenSans"].print("DRIVERZ.exe", _x+5, _y+1, Color.black)
+        Font["OpenSans"].print("Install the new\ndriver!", _x+5, _y+35, Color.black)
       }
     }
   }
