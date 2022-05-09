@@ -124,8 +124,8 @@ class main {
         pop.draw()
       }
       if (_popups.count >= 10) {
-        Font["OpenSans_XXL"].print("MEMORY FULL", 252, 282, Color.hex("fff"))
-        Font["OpenSans_XXL"].print("MEMORY FULL", 250, 280, Color.hex("f22"))
+        Font["OpenSans_XXL"].print("MEMORY FULL", 202, 202, Color.hex("fff"))
+        Font["OpenSans_XXL"].print("MEMORY FULL", 200, 200, Color.hex("f22"))
       }
       Font["OpenSans_XL"].print("Score: "+SCORE.toString, 5, -15, Color.white)
 	} else if (GAME == "over") {
