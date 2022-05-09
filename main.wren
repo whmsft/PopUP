@@ -4,7 +4,7 @@ import "input" for Keyboard, Mouse
 import "graphics" for Canvas, Color, Font
 import "io" for FileSystem
 
-var VERSION = "0.5.1.2"
+var VERSION = "0.5.1.2" // changes every update
 var SCORE = 0
 var GAME = "boot" // modes: boot, play, over
 
@@ -34,14 +34,17 @@ class Dialog {
     _type = random.int(2)
   }
   update() {
-    _scrollX = _lastx - Mouse.x
-    _scrollY = _lasty - Mouse.y
-    _lastx = Mouse.x
-    _lasty = Mouse.y
+    _scrollX = _lastx - Mouse.x // four variables,
+    _scrollY = _lasty - Mouse.y // containing data
+    _lastx = Mouse.x            // for scrolling
+    _lasty = Mouse.y            // the popup
+    
+    // check for click on the right spot
     if ((((Mouse.x > _x+_w-12*5) && (Mouse.x < _x+_w)) && ((Mouse.y < _y+8*5) && (Mouse.y > _y))) && (Mouse.isButtonPressed("left"))) {
       _finish = true
       SCORE = SCORE + 1
     }
+    // check for scrolling
     if (((Mouse.x > _x && Mouse.x < _x+_w) && (Mouse.y > _y && Mouse.y < _y+_h)) && (Mouse.isButtonPressed("left"))) {
       _x = _x - _scrollX
       _y = _y - _scrollY
