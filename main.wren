@@ -10,22 +10,22 @@ var GAME = "boot" // modes: boot, play, over
 
 /*
   dialogs map contains the pop-up's "data"
-  w -> width of dialog
-  h -> height of dialog
+  width -> width of dialog
+  height -> height of dialog
   title -> the heading/title of the dialog box
   body -> contents in the dialog
   **more of coming soon (buttons, custom color..)
 */
 var DIALOGS = {
   0: {
-    "w": 240,
-    "h": 160,
+    "width": 240,
+    "height": 160,
     "title": "LUCKY!.exe",
     "body": "You've WON\n$10000!"
   },
   1: {
-    "w": 240,
-    "h": 160,
+    "width": 240,
+    "height": 160,
     "title": "DRIVERZ.exe",
     "body": "Install the new\ndriver!"
   }
@@ -50,9 +50,9 @@ class Dialog {
     _lastx = Mouse.x
     _lasty = Mouse.y
     _rand = Random.new()
-    _type = random.int(DIALOGS.count+1)
-    _w = DIALOGS[type]["w"]
-    _h = DIALOGS[type]["h"]
+    _type = random.int(DIALOGS.count)
+    _w = DIALOGS[type]["width"]
+    _h = DIALOGS[type]["height"]
     _x = random.int(960-20)
     _y = random.int(544-20)
   }
@@ -80,8 +80,8 @@ class Dialog {
       Canvas.line(_x+_w-10*5, y+2*5, _x+w-2*5, y+6*5, Color.white, 2)
       Canvas.line(_x+_w-2*5, y+2*5, _x+w-10*5, y+6*5, Color.white, 2)
       Canvas.rect(_x-1,_y-1, _w+1, _h+1, Color.black)
-      Font["OpenSans"].print(DIALOGS["type"]["title"],_x+5, _y+1, Color.black)
-      Font["OpenSans"].print(DIALOGS["type"]["body"], _x+5, _y+35, Color.black)
+      Font["OpenSans"].print(DIALOGS[type]["title"],_x+5, _y+1, Color.black)
+      Font["OpenSans"].print(DIALOGS[type]["body"], _x+5, _y+35, Color.black)
     }
   }
 }
