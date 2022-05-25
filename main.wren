@@ -8,6 +8,29 @@ var VERSION = "0.5.1.2" // changes every update
 var SCORE = 0
 var GAME = "boot" // modes: boot, play, over
 
+/*
+  dialogs map contains the pop-up's "data"
+  w -> width of dialog
+  h -> height of dialog
+  title -> the heading/title of the dialog box
+  body -> contents in the dialog
+  **more of coming soon (buttons, custom color..)
+*/
+var dialogs = {
+  0: {
+    "w": 240,
+    "h": 160,
+    "title": "LUCKY!.exe",
+    "body": "You've WON\n$10000!"
+  },
+  1: {
+    "w": 240,
+    "h": 160,
+    "title": "DRIVERZ.exe",
+    "body": "Install the new\ndriver!"
+  }
+}
+
 class Dialog {
   finish {_finish}
   type {_type}
