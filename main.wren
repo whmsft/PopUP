@@ -16,7 +16,7 @@ var GAME = "boot" // modes: boot, play, over
   body -> contents in the dialog
   **more of coming soon (buttons, custom color..)
 */
-var dialogs = {
+var DIALOGS = {
   0: {
     "w": 240,
     "h": 160,
@@ -49,12 +49,12 @@ class Dialog {
     _scrollY = 0
     _lastx = Mouse.x
     _lasty = Mouse.y
-    _w = 240
-    _h = 160
     _rand = Random.new()
+    _type = random.int(DIALOGS.count+1)
+    _w = DIALOGS[type]["w"]
+    _h = DIALOGS[type]["h"]
     _x = random.int(960-20)
     _y = random.int(544-20)
-    _type = random.int(2)
   }
   update() {
     _scrollX = _lastx - Mouse.x // four variables,
@@ -80,13 +80,8 @@ class Dialog {
       Canvas.line(_x+_w-10*5, y+2*5, _x+w-2*5, y+6*5, Color.white, 2)
       Canvas.line(_x+_w-2*5, y+2*5, _x+w-10*5, y+6*5, Color.white, 2)
       Canvas.rect(_x-1,_y-1, _w+1, _h+1, Color.black)
-      if (type == 0) {
-        Font["OpenSans"].print("LUCKY!.exe",_x+5, _y+1, Color.black)
-        Font["OpenSans"].print("You've WON\n$10000!", _x+5, _y+35, Color.black)
-      } else if (type == 1) {
-        Font["OpenSans"].print("DRIVERZ.exe", _x+5, _y+1, Color.black)
-        Font["OpenSans"].print("Install the new\ndriver!", _x+5, _y+35, Color.black)
-      }
+      Font["OpenSans"].print(DIALOGS["type"]["title"],_x+5, _y+1, Color.black)
+      Font["OpenSans"].print(DIALOGS["type"]["body"], _x+5, _y+35, Color.black)
     }
   }
 }
