@@ -4,7 +4,7 @@ import "input" for Keyboard, Mouse
 import "graphics" for Canvas, Color, Font
 import "io" for FileSystem
 
-var VERSION = "0.5.1.2" // changes every update
+var VERSION = "0.5.2" // changes every update
 var SCORE = 0
 var GAME = "boot" // modes: boot, play, over
 

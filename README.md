@@ -20,10 +20,17 @@ A simple popUP game where your work is to close as many popups you can!
 GAME OVER on 15 popups
 
 # TODO
-1. Add many more types of popups (2 as of now)
+1. Add many more types of popups (4 as of now)
 2. Background music
-3. 2 options on each popup (ex: Ok, Cancel)
+3. options on each popup (ex: Ok, Cancel)
 
 ## Credits
 
+[Bob Nystorm](http://journal.stuffwithstuff.com/) ([munificent](https://github.com/munificent)) for the awesome [Wren](https://wren.io) programming language
+
+[avivberri](https://github.com/avivberri) for making domeengine!
+
+Domeengine's discord, that helped me many times
+
+## Resources used
 OpenSans Font (c) 2022 Open Sans
