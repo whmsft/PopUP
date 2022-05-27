@@ -39,7 +39,7 @@ var DIALOGS = {
     "width": 280,
     "height": 160,
     "title": "SALE!!!",
-    "body": "Free xPhones and\nxPads for just $5!!"
+    "body": "FREE xPhones and\nxPads for just $5!!"
   },
 }
 
@@ -174,3 +174,4 @@ class main {
 }
 
 var Game = main.new()
+
