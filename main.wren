@@ -41,6 +41,12 @@ var DIALOGS = {
     "title": "SALE!!!",
     "body": "FREE xPhones and\nxPads for just $5!!"
   },
+  4: {
+    "width":240,
+    "height": 160,
+    "title": "Antivirus",
+    "body": "Popup.exe detected\nplease delete it."
+  }
 }
 
 class Dialog {
