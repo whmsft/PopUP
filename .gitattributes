@@ -1,4 +1,4 @@
-*.wren linguist-language=C
+*.wren linguist-language=Markdown
 *.md linguist-vendored=false
 *.md linguist-generated=false
 *.md linguist-documentation=false
