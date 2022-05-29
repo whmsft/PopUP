@@ -23,6 +23,7 @@ GAME OVER on 15 popups
 1. Add many more types of popups (5 as of now)
 2. Background music
 3. options on each popup (ex: Ok, Cancel)
+4. A bootscreen 
 
 ## Credits
 
