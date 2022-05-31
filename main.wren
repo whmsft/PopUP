@@ -14,7 +14,6 @@ var GAME = "boot" // modes: boot, play, over
   height -> height of dialog
   title -> the heading/title of the dialog box
   body -> contents in the dialog
-  **more of coming soon (buttons, custom color..)
 */
 var DIALOGS = {
   0: {
