@@ -33,5 +33,5 @@ GAME OVER on 15 popups
 
 Domeengine's discord, that helped me many times
 
-## Resources used
+## Resource used
 OpenSans Font (c) 2022 Open Sans
