@@ -20,10 +20,9 @@ A simple popUP game where your work is to close as many popups you can!
 GAME OVER on 15 popups
 
 # TODO
-1. Add many more types of popups (5 as of now)
-2. Background music
-3. options on each popup (ex: Ok, Cancel)
-4. A bootscreen 
+1. Background music
+2. options on each popup (ex: Ok, Cancel)
+3. A bootscreen 
 
 ## Credits
 
