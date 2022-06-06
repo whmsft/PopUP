@@ -154,7 +154,7 @@ class main {
   draw(alpha) {
     Canvas.cls(Color.hex("0084ff"))
     if (GAME == "play") {
-      Font["winlogo"].print("A", 500, 100, Color.hex("fff"))
+      // Font["winlogo"].print("A", 500, 100, Color.hex("fff"))
       _popups.each{ |pop|
         pop.draw()
       }
