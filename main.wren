@@ -121,8 +121,6 @@ class main {
     Font.load("OpenSans_XL", "./OpenSans.ttf", 50)
     Font.load("OpenSans_XXL", "./OpenSans.ttf", 80)
     Font.load("OpenSans_XXXL", "./OpenSans.ttf", 300)
-    Font.load("winlogo", "./icons.ttf", 300)
-    Font.load("cursor", "./icons.ttf", 30)
   }
   update() {    
     if (GAME == "play") {
@@ -154,7 +152,6 @@ class main {
   draw(alpha) {
     Canvas.cls(Color.hex("0084ff"))
     if (GAME == "play") {
-      // Font["winlogo"].print("A", 500, 100, Color.hex("fff"))
       _popups.each{ |pop|
         pop.draw()
       }
@@ -172,9 +169,8 @@ class main {
       Canvas.cls(Color.hex("000"))
       Font["OpenSans_XXXL"].print(":)", 10, -125, Color.white)
       Font["OpenSans_XXL"].print("PopUp "+VERSION, 200, 90, Color.white)
-      Font["OpenSans"].print("Hit <RETURN> to start..", 10, 300, Color.white)
+      Font["OpenSans"].print("Hit <RETURN> to spark it up!", 10, 300, Color.white)
     }
-    // Font["cursor"].print("B", Mouse.x-5, Mouse.y, Color.hex("202020"))
   }
 }
 
