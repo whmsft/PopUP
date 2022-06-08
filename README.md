@@ -19,11 +19,6 @@ A simple popUP game where your work is to close as many popups you can!
 
 GAME OVER on 15 popups
 
-# TODO
-1. Background music
-2. options on each popup (ex: Ok, Cancel)
-3. A bootscreen 
-
 ## Credits
 
 [Bob Nystorm](http://journal.stuffwithstuff.com/) ([munificent](https://github.com/munificent)) for the awesome [Wren](https://wren.io) programming language
