@@ -4,16 +4,20 @@ import "input" for Keyboard, Mouse
 import "graphics" for Canvas, Color, Font
 import "io" for FileSystem
 
-if (FileSystem.doesFileExist(".data")) {
-  var DATA = FileSystem.load(".data")
-} else {
-  FileSystem.save(".data", "")
-  var DATA = FileSystem.load(".data")
-}
-
-var VERSION = "0.5.2" // changes every update
+var VERSION = "0.5.3.dev" // changes every update
 var SCORE = 0
 var GAME = "boot" // modes: boot, play, over
+var DATA = ""
+var HIGHSCORE = ""
+
+if (FileSystem.doesFileExist(".data")) {
+  DATA = FileSystem.load(".data")
+  HIGHSCORE = DATA[1..4]
+} else {
+  FileSystem.save(".data", "|0000|")
+  DATA = FileSystem.load(".data")
+  HIGHSCORE = DATA[1..4]
+}
 
 /*
   dialogs map contains the pop-up's "data"
@@ -168,12 +172,14 @@ class main {
       }
       Font["OpenSans_XL"].print("Score: "+SCORE.toString, 5, -15, Color.white)
 	} else if (GAME == "over") {
+    
 		Font["OpenSans_XXXL"].print(":(", 10, -125, Color.white)
 		Font["OpenSans_XXL"].print("PopUp "+VERSION, 200, 90, Color.white)
 		Font["OpenSans"].print("Your PC ran into a problem and needs to restart\nWe're just collecting some error info, then\nplease throw this PC into the bin.", 10, 300, Color.white)
 		Font["OpenSans_S"].print("If you would like to learn more then don't search online\nblue_screen_of_death_in_whmsft_popup_err_101", 10, 475, Color.white)
 	} else if (GAME == "boot") {
       Canvas.cls(Color.hex("000"))
+      Canvas.print(HIGHSCORE, 10, 150, Color.white)
       Font["OpenSans_XXXL"].print(":)", 10, -125, Color.white)
       Font["OpenSans_XXL"].print("PopUp "+VERSION, 200, 90, Color.white)
       Font["OpenSans"].print("Hit <RETURN> to spark it up!", 10, 300, Color.white)
