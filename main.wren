@@ -4,6 +4,13 @@ import "input" for Keyboard, Mouse
 import "graphics" for Canvas, Color, Font
 import "io" for FileSystem
 
+if (FileSystem.doesFileExist("data.df")) {
+  var DATA = FileSystem.load("data.df")
+} else {
+  FileSystem.save("data.df", "")
+  var DATA = FileSystem.load("data.df")
+}
+
 var VERSION = "0.5.2" // changes every update
 var SCORE = 0
 var GAME = "boot" // modes: boot, play, over
