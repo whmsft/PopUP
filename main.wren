@@ -4,11 +4,11 @@ import "input" for Keyboard, Mouse
 import "graphics" for Canvas, Color, Font
 import "io" for FileSystem
 
-if (FileSystem.doesFileExist("data.df")) {
-  var DATA = FileSystem.load("data.df")
+if (FileSystem.doesFileExist(".data")) {
+  var DATA = FileSystem.load(".data")
 } else {
-  FileSystem.save("data.df", "")
-  var DATA = FileSystem.load("data.df")
+  FileSystem.save(".data", "")
+  var DATA = FileSystem.load(".data")
 }
 
 var VERSION = "0.5.2" // changes every update
