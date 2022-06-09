@@ -5,5 +5,4 @@ SCRIBBLE
 *.exe
 *.html
 release.cmd
-run.bat
 builds/
