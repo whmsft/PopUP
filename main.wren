@@ -10,7 +10,7 @@ var GAME = "boot" // modes: boot, play, over
 var DATA = ""
 var HIGHSCORE = 0
 
-if (FileSystem.doesFileExist(".data")) {
+if (FileSystem.listFiles("./").contains(".data")) {
   DATA = FileSystem.load(".data")
   HIGHSCORE = Num.fromString(DATA[1..4])
 } else {
