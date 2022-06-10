@@ -1,2 +1,2 @@
-dome nest main.wren OpenSans.ttf icons.ttf
+dome nest main.wren OpenSans.ttf
 dome fuse game.egg popup.exe
