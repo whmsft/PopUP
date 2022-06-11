@@ -174,6 +174,7 @@ class main {
         Font["OpenSans_XXL"].print("MEMORY FULL", 202, 202, Color.hex("fff"))
         Font["OpenSans_XXL"].print("MEMORY FULL", 200, 200, Color.hex("f22"))
       }
+      Font["OpenSans_XL"].print("Score: "+SCORE.toString, 7, -13, Color.black)
       Font["OpenSans_XL"].print("Score: "+SCORE.toString, 5, -15, Color.white)
 	} else if (GAME == "over") {
     if (HIGHSCORE < SCORE) HIGHSCORE = SCORE
