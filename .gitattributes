@@ -1,0 +1,9 @@
+*.wren linguist-language=wrenlang
+
+*.wren linguist-vendored=false
+
+*.wren linguist-generated=false
+
+*.wren linguist-documentation=false
+
+*.wren linguist-detectable=true
