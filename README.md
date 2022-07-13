@@ -29,3 +29,5 @@ Domeengine's discord, that helped me many times
 
 ## Resource used
 OpenSans Font (c) 2022 Open Sans
+
+Todo: improve popup drag
