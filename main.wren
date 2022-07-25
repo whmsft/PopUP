@@ -107,7 +107,7 @@ class Dialog {
       Canvas.rectfill(_x+_w-12*5, _y, 12*5,8*5, Color.hex("f00"))
       Canvas.line(_x+_w-10*5, y+2*5, _x+w-2*5, y+6*5, Color.white, 2)
       Canvas.line(_x+_w-2*5, y+2*5, _x+w-10*5, y+6*5, Color.white, 2)
-      Canvas.rect(_x-1,_y-1, _w+1, _h+1, Color.black)
+      // Canvas.rect(_x-1,_y-1, _w+1, _h+1, Color.black)
       Font["OpenSans"].print(DIALOGS[type]["title"],_x+5, _y+1, Color.black)
       Font["OpenSans"].print(DIALOGS[type]["body"], _x+5, _y+40, Color.black)
     }
