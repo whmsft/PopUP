@@ -4,7 +4,7 @@ import "input" for Keyboard, Mouse
 import "graphics" for Canvas, Color, Font
 import "io" for FileSystem
 
-var VERSION = "0.5.3" // changes every update
+var VERSION = "0.5.4" // changes every update
 var SCORE = 0
 var GAME = "boot" // modes: boot, play, over
 var DATA = ""
@@ -179,7 +179,7 @@ class main {
 	} else if (GAME == "over") {
     if (HIGHSCORE < SCORE) HIGHSCORE = SCORE
 		Font["OpenSans_XXXL"].print(":(", 10, -125, Color.white)
-		Font["OpenSans_XXL"].print("PopUp "+VERSION, 200, 90, Color.white)
+  	Font["OpenSans_XXL"].print("PopUp "+VERSION, 200, 90, Color.white)
 		Font["OpenSans"].print("Your PC ran into a problem and needs to restart\nWe're just collecting some error info, then\nplease throw this PC into the bin.", 10, 300, Color.white)
 		Font["OpenSans_S"].print("If you would like to learn more then don't search online\nblue_screen_of_death_in_whmsft_popup_err_101", 10, 475, Color.white)
 		SCORE = 0
@@ -195,4 +195,3 @@ class main {
 }
 
 var Game = main.new()
-
