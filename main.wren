@@ -4,7 +4,7 @@ import "input" for Keyboard, Mouse
 import "graphics" for Canvas, Color, Font
 import "io" for FileSystem
 
-var VERSION = "0.5.4" // changes every update
+var VERSION = "0.5.5" // changes every update
 var SCORE = 0
 var GAME = "boot" // modes: boot, play, over
 var DATA = ""
@@ -20,7 +20,7 @@ if (FileSystem.listFiles("./").contains(".data")) {
 }
 
 /*
-  dialogs map contains the pop-up's "data"
+  [DIALOGS] map contains the pop-up's "data"
   width -> width of dialog
   height -> height of dialog
   title -> the heading/title of the dialog box
