@@ -4,6 +4,8 @@ import "input" for Keyboard, Mouse
 import "graphics" for Canvas, Color, Font
 import "io" for FileSystem
 
+Window.fullscreen = true
+
 var VERSION = "0.5.5" // changes every update
 var SCORE = 0
 var GAME = "boot" // modes: boot, play, over
@@ -52,10 +54,16 @@ var DIALOGS = {
     "body": "FREE xPhones and\nxPads for just $5!!"
   },
   4: {
-    "width":240,
+    "width": 280,
     "height": 160,
     "title": "Antivirus",
-    "body": "Popup.exe detected\nplease delete it."
+    "body": "Popup.wren detected\nplease delete it."
+  },
+  5: {
+    "width": 300,
+    "height" : 160,
+    "title": "FREE Trip!",
+    "body": "Get a FREE trip to Bazil!\n >>> CLAIM NOW!! <<<"
   }
 }
 
@@ -71,6 +79,16 @@ class Dialog {
   lastx {_lastx}
   lasty {_lasty}
   random {_rand}
+  
+  rrectfill(x, y, w, h, r, c) {
+    Canvas.circlefill(x+r, y+r, r-1, c)
+    Canvas.circlefill(x+r, y+h-r, r-1, c)
+    Canvas.circlefill(x+w-r, y+r, r-1, c)
+    Canvas.circlefill(x+w-r, y+h-r, r-1, c)
+    Canvas.rectfill(x+r, y, w-r-r, h, c)
+    Canvas.rectfill(x, y+r, w, h-r-r, c)
+  }
+  
   construct new() {
     _finish = false
     _scrollX = 0
@@ -103,7 +121,7 @@ class Dialog {
   }
   draw() {
     if (finish == false) {
-      Canvas.rectfill(_x, _y, _w, _h, Color.white)
+      rrectfill(_x, _y, _w, _h, 10, Color.white)
       Canvas.rectfill(_x+_w-12*5, _y, 12*5,8*5, Color.hex("f00"))
       Canvas.line(_x+_w-10*5, y+2*5, _x+w-2*5, y+6*5, Color.white, 2)
       Canvas.line(_x+_w-2*5, y+2*5, _x+w-10*5, y+6*5, Color.white, 2)
