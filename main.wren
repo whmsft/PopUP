@@ -1,17 +1,17 @@
 import "dome" for Window
 import "random" for Random
 import "input" for Keyboard, Mouse
-import "graphics" for Canvas, Color, Font
+import "graphics" for Canvas, Color, Font, ImageData
 import "io" for FileSystem
 
-// Window.fullscreen = true
+Window.fullscreen = true
 
-var VERSION = "0.6.2" // changes every update
+var VERSION = "0.6.4" // changes every update
 var SCORE = 0
-var GAME = "boot" // modes: boot, play, over
+var MODE = "desktop" // modes: boot, desktop, play, over
 var DATA = ""
 var HIGHSCORE = 0
-var SCALE = 1
+var SCALE = 5
 
 if (FileSystem.listFiles("./").contains(".data")) {
   DATA = FileSystem.load(".data")
@@ -140,7 +140,7 @@ class main {
     return ("0"*(4-_newnum.count))+_newnum
   }
   init() {
-    // Mouse.hidden = true
+    Mouse.hidden = false
     _varpostmp = 0
     _popups = []
     _rand = Random.new()
@@ -156,8 +156,8 @@ class main {
     Font.load("OpenSans_XXL", "./OpenSans.ttf", 340/SCALE)
     Font.load("OpenSans_XXXL", "./OpenSans.ttf", 1275/SCALE)
   }
-  update() {    
-    if (GAME == "play") {
+  update() {
+    if (MODE == "play") {
       _tick = _tick+1
       if (_tick >= 60 * _wait) {
         _popups.add(Dialog.new())
@@ -173,19 +173,23 @@ class main {
       }
       _varpostmp = 0
       if ((_popups.count >= 15) || (Keyboard.isKeyDown("up"))) {
-        GAME = "over"
+        MODE = "over"
         _popups = []
         Canvas.cls()
       }
     } else {
       if (Keyboard.isKeyDown("return")) {
-        GAME = "play"
+        MODE = "play"
       }
     }
   }
   draw(alpha) {
     Canvas.cls(Color.hex("0084ff"))
-    if (GAME == "play") {
+	if (MODE == "desktop") {
+		ImageData.loadFromFile("./resc/about.png").transform({"scaleX":2/SCALE, "scaleY":2/SCALE}).draw(25/SCALE, 25/SCALE)
+		Canvas.rectfill(0, 2160/SCALE-(150/SCALE), 4096/SCALE, 150/SCALE, Color.blue)
+	}
+    if (MODE == "play") {
       _popups.each{ |pop|
         pop.draw()
       }
@@ -195,8 +199,7 @@ class main {
       }
       Font["OpenSans_XL"].print("Score: "+SCORE.toString, 29.75/SCALE, -52/SCALE, Color.black)
       Font["OpenSans_XL"].print("Score: "+SCORE.toString, 21.25/SCALE, -60/SCALE, Color.white)
-	  //Canvas.rectfill(0, 2160-50, 4096, 50, Color.lightgray)
-	} else if (GAME == "over") {
+	} else if (MODE == "over") {
     if (HIGHSCORE < SCORE) {
       HIGHSCORE = SCORE
       FileSystem.save(".data", "|"+num2str(HIGHSCORE)+"|")
@@ -206,13 +209,16 @@ class main {
 		Font["OpenSans"].print("Your PC ran into a problem and needs to restart\nWe're just collecting some error info, then\nplease throw this PC into the bin.\nAlternatively, you shall hit <RETURN> again.", 42.5/SCALE, 1220/SCALE, Color.white)
 		Font["OpenSans_S"].print("If you would like to learn more then don't search online\nblue_screen_of_death_in_whmsft_popup_err_101", 42.5/SCALE, 475*4/SCALE, Color.white)
 		SCORE = 0
-	} else if (GAME == "boot") {
+	} else if (MODE == "boot") {
       Canvas.cls(Color.hex("000"))
       Font["OpenSans"].print("HIGHSCORE:"+HIGHSCORE.toString, 42.5/SCALE, 2000/SCALE, Color.white)
       Font["OpenSans_XXXL"].print(":)", 42.5/SCALE, -500/SCALE, Color.white)
       Font["OpenSans_XXL"].print("PopUp "+VERSION, 850/SCALE, 360/SCALE, Color.white)
       Font["OpenSans"].print("Hit <RETURN> to spark it up!", 42.5/SCALE, 1200/SCALE, Color.white)
     }
+
+	// ImageData.loadFromFile("./resc/cursor.png").draw(Mouse.x, Mouse.y)
+	
   }
 }
 
