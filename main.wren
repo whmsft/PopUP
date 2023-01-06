@@ -4,7 +4,7 @@ import "input" for Keyboard, Mouse
 import "graphics" for Canvas, Color, Font, ImageData
 import "io" for FileSystem
 
-Window.fullscreen = true
+Window.fullscreen = false
 
 var VERSION = "0.6.4" // changes every update
 var SCORE = 0
@@ -13,12 +13,12 @@ var DATA = ""
 var HIGHSCORE = 0
 var SCALE = 5
 
-if (FileSystem.listFiles("./").contains(".data")) {
-  DATA = FileSystem.load(".data")
+if (FileSystem.listFiles("./resc/").contains("./resc/data")) {
+  DATA = FileSystem.load("../resc/data")
   HIGHSCORE = Num.fromString(DATA[1..4])
 } else {
-  FileSystem.save(".data", "|0000|")
-  DATA = FileSystem.load(".data")
+  FileSystem.save("./resc/data", "|0000|")
+  DATA = FileSystem.load("./resc/data")
   HIGHSCORE = Num.fromString(DATA[1..4])
 }
 
@@ -150,11 +150,12 @@ class main {
     Canvas.resize(4096/SCALE, 2160/SCALE)
     Window.resize(_scale * Canvas.width, _scale * Canvas.height)
     Window.title = "PopUp "+VERSION
-    Font.load("OpenSans_S", "./OpenSans.ttf", 85/SCALE)
-    Font.load("OpenSans", "./OpenSans.ttf", 106.25/SCALE)
-    Font.load("OpenSans_XL", "./OpenSans.ttf", 212.5/SCALE)
-    Font.load("OpenSans_XXL", "./OpenSans.ttf", 340/SCALE)
-    Font.load("OpenSans_XXXL", "./OpenSans.ttf", 1275/SCALE)
+    Font.load("OpenSans_XS", "./resc/OpenSans.ttf", 50/SCALE)
+    Font.load("OpenSans_S", "./resc/OpenSans.ttf", 85/SCALE)
+    Font.load("OpenSans", "./resc/OpenSans.ttf", 106.25/SCALE)
+    Font.load("OpenSans_XL", "./resc/OpenSans.ttf", 212.5/SCALE)
+    Font.load("OpenSans_XXL", "./resc/OpenSans.ttf", 340/SCALE)
+    Font.load("OpenSans_XXXL", "./resc/OpenSans.ttf", 1275/SCALE)
   }
   update() {
     if (MODE == "play") {
@@ -186,7 +187,8 @@ class main {
   draw(alpha) {
     Canvas.cls(Color.hex("0084ff"))
 	if (MODE == "desktop") {
-		ImageData.loadFromFile("./resc/about.png").transform({"scaleX":2/SCALE, "scaleY":2/SCALE}).draw(25/SCALE, 25/SCALE)
+		ImageData.loadFromFile("./resc/logo.png").transform({"scaleX":2/SCALE, "scaleY":2/SCALE}).draw(25/SCALE, 25/SCALE)
+		Font["OpenSans_XS"].print("Pop.up", 50/SCALE, 225/SCALE, Color.white)
 		Canvas.rectfill(0, 2160/SCALE-(150/SCALE), 4096/SCALE, 150/SCALE, Color.blue)
 	}
     if (MODE == "play") {
@@ -202,7 +204,7 @@ class main {
 	} else if (MODE == "over") {
     if (HIGHSCORE < SCORE) {
       HIGHSCORE = SCORE
-      FileSystem.save(".data", "|"+num2str(HIGHSCORE)+"|")
+      FileSystem.save("./resc/data", "|"+num2str(HIGHSCORE)+"|")
     }
 		Font["OpenSans_XXXL"].print(":(", 42.5/SCALE, -500/SCALE, Color.white)
   	Font["OpenSans_XXL"].print("PopUp "+VERSION, 850/SCALE, 360/SCALE, Color.white)
