@@ -6,4 +6,4 @@ SCRIBBLE
 *.html
 release.cmd
 builds/
-.data
+resc/data
