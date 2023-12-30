@@ -27,7 +27,7 @@ The file `build.cmd` has the only two lines of code you need to get it up and ru
 
 [Bob Nystorm](http://journal.stuffwithstuff.com/) ([munificent](https://github.com/munificent)) for the awesome [Wren](https://wren.io) programming language
 
-[@avivberri](https://github.com/avivberri) for bringing DOME to life.
+[@avivbeeri](https://github.com/avivbeeri) for bringing DOME to life.
 
 DOME's Discord: A community build by people who love DOME.
 
