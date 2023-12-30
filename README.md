@@ -15,7 +15,7 @@
 </h1>
 
 
-A simple popUP game where your work is to close as many popups you can!
+A simple (will become complex in future) pop-up game where your work is to close as many popups you can!
 
 GAME OVER on 15 popups
 
@@ -27,9 +27,9 @@ The file `build.cmd` has the only two lines of code you need to get it up and ru
 
 [Bob Nystorm](http://journal.stuffwithstuff.com/) ([munificent](https://github.com/munificent)) for the awesome [Wren](https://wren.io) programming language
 
-[avivberri](https://github.com/avivberri) for making DOME!
+[@avivberri](https://github.com/avivberri) for bringing DOME to life.
 
-Domeengine's discord: A community build by people who love DOME.
+DOME's Discord: A community build by people who love DOME.
 
 ## Resource used
 OpenSans Font (c) 2022 Open Sans
