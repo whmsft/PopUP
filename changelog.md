@@ -1,15 +1,13 @@
-# Changelog by versions
+# Changelog by versions/updates
 
-<i>Determined by each single commit since project's creation.</i>
+<i>Changes compared of releases to their previous counterparts</i>
 
 ```
-v0.5.3 -> main
+v0.5.3 -> main (latest commit)
 |> In-Game:
-|--> Shadow on Score
-|--> A new screen - Desktop
-|--> Maximum resolution set to 4096x2160
-|--> Resolution Negatively Scaled for viewing
-|--> Rounded Popup Corners
+|--> Shadow behind Score
+|--> Window starts at Fullscreen
+|--> Resolution set as Screen's maximum
 |> Other:
 |--> Bug report template
 |--> Enhancement template
