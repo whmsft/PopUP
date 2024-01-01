@@ -4,9 +4,9 @@ import "input" for Keyboard, Mouse
 import "graphics" for Canvas, Color, Font
 import "io" for FileSystem
 
-var VERSION = "0.5.3" // changes every update
+var VERSION = "0.6" // changes every update
 var SCORE = 0
-var GAME = "boot" // modes: boot, play, over
+var MODE = "boot" // modes: boot, play, over
 var DATA = ""
 var HIGHSCORE = 0
 
@@ -81,8 +81,12 @@ class Dialog {
     _type = random.int(DIALOGS.count)
     _w = DIALOGS[type]["width"]
     _h = DIALOGS[type]["height"]
-    _x = random.int(960-20)
-    _y = random.int(544-20)
+    _x = random.int(Canvas.width-w)
+    _y = random.int(Canvas.height-w)
+  }
+  position(newX, newY) {
+    _x=newX
+    _y=newY
   }
   update() {
     _scrollX = _lastx - Mouse.x // four variables,
@@ -96,10 +100,10 @@ class Dialog {
       SCORE = SCORE + 1
     }
     // check for scrolling
-    if (((Mouse.x > _x && Mouse.x < _x+_w) && (Mouse.y > _y && Mouse.y < _y+_h)) && (Mouse.isButtonPressed("left"))) {
-      _x = _x - _scrollX
-      _y = _y - _scrollY
-    }
+    //if (((Mouse.x > _x && Mouse.x < _x+_w) && (Mouse.y > _y && Mouse.y < _y+_h)) && (Mouse.isButtonPressed("left"))) {
+    //  _x = _x - _scrollX
+    //  _y = _y - _scrollY
+    //}
   }
   draw() {
     if (finish == false) {
@@ -121,69 +125,84 @@ class main {
     return ("0"*(4-_newnum.count))+_newnum
   }
   init() {
-    // Mouse.hidden = true
-    _varpostmp = 0
+    Window.fullscreen=true
+    _mouseClick = [false, -1, -1, -1] // [isMouseRegisteredToPopup, popupIndex, mouseDistFromX, mouseDistFromY]
+    _loopForPopupIndex = 0
     _popups = []
     _rand = Random.new()
     _wait = _rand.float(0.25, 1.25)
     _tick = 0
     _scale = 1
-    Canvas.resize(960, 544)
-    Window.resize(_scale * Canvas.width, _scale * Canvas.height)
+    //Canvas.resize(960, 544)
+    Canvas.resize(Window.width,Window.height)
+    //Window.resize(_scale * Canvas.width, _scale * Canvas.height)
     Window.title = "PopUp "+VERSION
     Font.load("OpenSans_S", "./_assets/OpenSans.ttf", 20)
     Font.load("OpenSans", "./_assets/OpenSans.ttf", 25)
     Font.load("OpenSans_XL", "./_assets/OpenSans.ttf", 50)
     Font.load("OpenSans_XXL", "./_assets/OpenSans.ttf", 80)
-    Font.load("OpenSans_XXXL", "./_assets/OpenSans.ttf", 300)
+    Font.load("OpenSans_XXXL", "./_assets/OpenSans.ttf", Canvas.height/3)
   }
-  update() {    
-    if (GAME == "play") {
+  update() {
+    Canvas.resize(Window.width,Window.height)
+    Font.load("OpenSans_XXXL", "./_assets/OpenSans.ttf", Canvas.height/2)
+    if (MODE == "play") {
       _tick = _tick+1
-      if (_tick >= 60 * _wait) {
+      if (_tick >= 60 * _wait || Keyboard.isKeyDown("down")) {
         _popups.add(Dialog.new())
         _tick = 0
         _wait = _rand.float(0.5, 1.5)
       }
+      if (!Mouse.isButtonPressed("left")) {
+        _mouseClick=[false,-1,-1,-1]
+      }
       _popups.each { |pop|
         pop.update()
-        if (pop.finish == true) {
-          _popups.removeAt(_varpostmp)
+        if (_mouseClick[0]==false && Mouse.isButtonPressed("left") && ((Mouse.x > pop.x && Mouse.x < pop.x+pop.w) && (Mouse.y > pop.y && Mouse.y < pop.y+pop.h))) {
+          _mouseClick=[true, _loopForPopupIndex,Mouse.x-pop.x,Mouse.y-pop.y]
         }
-        _varpostmp = _varpostmp + 1
+        if (_mouseClick[1]==_loopForPopupIndex) {
+          _popups[_loopForPopupIndex].position(Mouse.x-_mouseClick[2], Mouse.y-_mouseClick[3])
+        }
+        if (pop.finish == true) {
+          _popups.removeAt(_loopForPopupIndex)
+          _mouseClick=[false,-1,-1,-1]
+        }
+        _loopForPopupIndex=_loopForPopupIndex+1
       }
-      _varpostmp = 0
+      _loopForPopupIndex=0
       if ((_popups.count >= 15) || (Keyboard.isKeyDown("up"))) {
-        GAME = "over"
+        MODE = "over"
         _popups = []
         Canvas.cls()
       }
     } else {
       if (Keyboard.isKeyDown("return")) {
-        GAME = "play"
+        MODE = "play"
       }
     }
   }
   draw(alpha) {
-    Canvas.cls(Color.hex("0084ff"))
-    if (GAME == "play") {
+    Canvas.cls(Color.hex("#204050"))
+    if (MODE == "play") {
       _popups.each{ |pop|
         pop.draw()
       }
       if (_popups.count >= 10) {
-        Font["OpenSans_XXL"].print("MEMORY FULL", 202, 202, Color.hex("fff"))
-        Font["OpenSans_XXL"].print("MEMORY FULL", 200, 200, Color.hex("f22"))
+        Font["OpenSans_XXL"].print("MEMORY FULL", Canvas.width/4+2, Canvas.height/3+2, Color.hex("fff"))
+        Font["OpenSans_XXL"].print("MEMORY FULL", Canvas.width/4, Canvas.height/3, Color.hex("f22"))
       }
+      Font["OpenSans_XL"].print("Score: "+SCORE.toString, 4, -16, Color.black)
       Font["OpenSans_XL"].print("Score: "+SCORE.toString, 5, -15, Color.white)
-  } else if (GAME == "over") {
-    if (HIGHSCORE < SCORE) HIGHSCORE = SCORE
-    Font["OpenSans_XXXL"].print(":(", 10, -125, Color.white)
-    Font["OpenSans_XXL"].print("PopUp "+VERSION, 200, 90, Color.white)
-    Font["OpenSans"].print("Your PC ran into a problem and needs to restart\nWe're just collecting some error info, then\nplease throw this PC into the bin.", 10, 300, Color.white)
-    Font["OpenSans_S"].print("If you would like to learn more then don't search online\nblue_screen_of_death_in_whmsft_popup_err_101", 10, 475, Color.white)
-    SCORE = 0
-    FileSystem.save(".data", "|"+num2str(HIGHSCORE)+"|")
-    } else if (GAME == "boot") {
+    } else if (MODE == "over") {
+      if (HIGHSCORE < SCORE) HIGHSCORE = SCORE
+      Font["OpenSans_XXXL"].print(":(", 10, -125, Color.white)
+      Font["OpenSans_XXL"].print("PopUp "+VERSION, 200, 90, Color.white)
+      Font["OpenSans"].print("Your PC ran into a problem and needs to restart\nWe're just collecting some error info, then\nplease throw this PC into the bin.", 10, 300, Color.white)
+      Font["OpenSans_S"].print("If you would like to learn more then don't search online\nblue_screen_of_death_in_whmsft_popup_err_101", 10, 475, Color.white)
+      SCORE = 0
+      FileSystem.save(".data", "|"+num2str(HIGHSCORE)+"|")
+    } else if (MODE == "boot") {
       Canvas.cls(Color.hex("000"))
       Font["OpenSans"].print("HIGHSCORE:"+HIGHSCORE.toString, 10, 500, Color.white)
       Font["OpenSans_XXXL"].print(":)", 10, -125, Color.white)
@@ -194,4 +213,3 @@ class main {
 }
 
 var Game = main.new()
-

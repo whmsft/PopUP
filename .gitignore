@@ -4,6 +4,6 @@ SCRIBBLE
 *.log
 *.exe
 *.html
+*.data
 release.cmd
 builds/
-resc/data
