@@ -140,11 +140,11 @@ class main {
     Font.load("OpenSans_S", "./_assets/OpenSans.ttf", 20)
     Font.load("OpenSans", "./_assets/OpenSans.ttf", 25)
     Font.load("OpenSans_XL", "./_assets/OpenSans.ttf", 50)
-    Font.load("OpenSans_XXL", "./_assets/OpenSans.ttf", 80)
     Font.load("OpenSans_XXXL", "./_assets/OpenSans.ttf", Canvas.height/3)
   }
   update() {
     Canvas.resize(Window.width,Window.height)
+    Font.load("OpenSans_XXL", "./_assets/OpenSans.ttf", Canvas.height/6)
     Font.load("OpenSans_XXXL", "./_assets/OpenSans.ttf", Canvas.height/2)
     if (MODE == "play") {
       _tick = _tick+1
@@ -189,25 +189,26 @@ class main {
         pop.draw()
       }
       if (_popups.count >= 10) {
-        Font["OpenSans_XXL"].print("MEMORY FULL", Canvas.width/4+2, Canvas.height/3+2, Color.hex("fff"))
-        Font["OpenSans_XXL"].print("MEMORY FULL", Canvas.width/4, Canvas.height/3, Color.hex("f22"))
+        Font["OpenSans_XXL"].print("MEMORY FULL", Canvas.width/6+2, Canvas.height/3+2, Color.hex("fff"))
+        Font["OpenSans_XXL"].print("MEMORY FULL", Canvas.width/6, Canvas.height/3, Color.hex("f22"))
       }
       Font["OpenSans_XL"].print("Score: "+SCORE.toString, 4, -16, Color.black)
       Font["OpenSans_XL"].print("Score: "+SCORE.toString, 5, -15, Color.white)
     } else if (MODE == "over") {
+      Canvas.cls(Color.hex("#0084ff"))
       if (HIGHSCORE < SCORE) HIGHSCORE = SCORE
       Font["OpenSans_XXXL"].print(":(", 10, -125, Color.white)
-      Font["OpenSans_XXL"].print("PopUp "+VERSION, 200, 90, Color.white)
-      Font["OpenSans"].print("Your PC ran into a problem and needs to restart\nWe're just collecting some error info, then\nplease throw this PC into the bin.", 10, 300, Color.white)
-      Font["OpenSans_S"].print("If you would like to learn more then don't search online\nblue_screen_of_death_in_whmsft_popup_err_101", 10, 475, Color.white)
+      Font["OpenSans_XXL"].print("PopUp "+VERSION, Canvas.width/5, Canvas.height/6, Color.white)
+      Font["OpenSans"].print("Your PC ran into a problem and needs to restart\nWe're just collecting some error info, then\nplease throw this PC into the bin.", 10, Canvas.height/1.5, Color.white)
+      Font["OpenSans_S"].print("If you would like to learn more then don't search online\nblue_screen_of_death_in_whmsft_popup_err_101", 10, Canvas.height-70, Color.white)
       SCORE = 0
       FileSystem.save(".data", "|"+num2str(HIGHSCORE)+"|")
     } else if (MODE == "boot") {
       Canvas.cls(Color.hex("000"))
-      Font["OpenSans"].print("HIGHSCORE:"+HIGHSCORE.toString, 10, 500, Color.white)
+      Font["OpenSans"].print("HIGHSCORE:"+HIGHSCORE.toString, 10, Canvas.height-40, Color.white)
       Font["OpenSans_XXXL"].print(":)", 10, -125, Color.white)
-      Font["OpenSans_XXL"].print("PopUp "+VERSION, 200, 90, Color.white)
-      Font["OpenSans"].print("Hit <RETURN> to spark it up!", 10, 300, Color.white)
+      Font["OpenSans_XXL"].print("PopUp "+VERSION, Canvas.width/5, Canvas.height/6, Color.white)
+      Font["OpenSans"].print("Hit <RETURN> to spark it up!", Canvas.width/5, Canvas.width/4, Color.white)
     }
   }
 }
