@@ -3,7 +3,7 @@
 <i>Changes compared of releases to their previous counterparts</i>
 
 ```
-v0.5.3 -> v0.5.5 (latest commit)
+v0.5.3 -> v0.5.5
 |> In-Game:
 |--> Shadow behind Score
 |--> Window starts at Fullscreen
