@@ -4,7 +4,7 @@ import "input" for Keyboard, Mouse
 import "graphics" for Canvas, Color, Font
 import "io" for FileSystem
 
-var VERSION = "0.6" // changes every update
+var VERSION = "0.5.5" // changes every update
 var SCORE = 0
 var MODE = "boot" // modes: boot, play, over
 var DATA = ""
@@ -183,8 +183,8 @@ class main {
     }
   }
   draw(alpha) {
-    Canvas.cls(Color.hex("#204050"))
     if (MODE == "play") {
+      Canvas.cls(Color.hex("#204050"))
       _popups.each{ |pop|
         pop.draw()
       }
@@ -204,7 +204,7 @@ class main {
       SCORE = 0
       FileSystem.save(".data", "|"+num2str(HIGHSCORE)+"|")
     } else if (MODE == "boot") {
-      Canvas.cls(Color.hex("000"))
+      Canvas.cls(Color.hex("#000"))
       Font["OpenSans"].print("HIGHSCORE:"+HIGHSCORE.toString, 10, Canvas.height-40, Color.white)
       Font["OpenSans_XXXL"].print(":)", 10, -125, Color.white)
       Font["OpenSans_XXL"].print("PopUp "+VERSION, Canvas.width/5, Canvas.height/6, Color.white)
